@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妈妈生日快乐！</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="background-mosaic">
+        <div class="mosaic-grid">
+            <div class="mosaic-item" style="background-image: url('images/photo17.jpg')"></div>
+            <div class="mosaic-item" style="background-image: url('images/photo18.jpg')"></div>
+            <div class="mosaic-item" style="background-image: url('images/photo19.jpg')"></div>
+            <div class="mosaic-item" style="background-image: url('images/photo20.jpg')"></div>
+        </div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <div class="fireworks-container"></div>
+    <div class="floating-hearts"></div>
+    
+    <div class="music-control">
+        <audio id="bgMusic" loop>
+            <source src="music/song1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="bgMusic2">
+            <source src="music/song2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="bgMusic3">
+            <source src="music/song3.mp3" type="audio/mpeg">
+        </audio>
+        <button id="musicToggle">🎵</button>
+    </div>
+
+    <div class="container">
+        <section class="intro">
+            <div class="intro-content">
+                <div class="title-group">
+                    <h1 class="animate__animated animate__fadeIn">生日快乐，妈妈！</h1>
+                </div>
+                <div class="birthday-cake-wrapper">
+                    <div class="birthday-cake">
+                        <div class="cake-base">
+                            <div class="cake-layer"></div>
+                            <div class="cake-layer"></div>
+                            <div class="cake-layer"></div>
+                        </div>
+                        <div class="candles">
+                            <div class="candle">
+                                <div class="flame"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <span>点击试试看</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="falling-items"></div>
+        </section>
+
+        <section class="transition-text" data-aos="fade-up">
+            <div class="text-wrapper">
+                <p>时光飞逝</p>
+                <p>留下的是永恒的爱</p>
+            </div>
+        </section>
+
+        <section class="photos" data-aos="fade-up">
+            <div class="photo-wall">
+                <!-- 第1张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo1.jpg" alt="温馨时刻1">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第2张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo2.jpg" alt="温馨时刻2">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第3张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo3.jpg" alt="温馨时刻3">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第4张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo4.jpg" alt="温馨时刻4">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第5张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo5.jpg" alt="温馨时刻5">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第6张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo6.jpg" alt="温馨时刻6">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第7张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo7.jpg" alt="温馨时刻7">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第8张照片 -->
+                <div class="photo-item" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="photo-card">
+                        <div class="photo-inner">
+                            <div class="photo-front">
+                                <img src="images/photo8.jpg" alt="温馨时刻8">
+                            </div>
+                            <div class="photo-back">
+                                <img src="" alt="随机照片">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wishes" data-aos="fade-up">
+            <div class="wish-container">
+                <div class="wish-text">
+                    <h2>亲爱的妈妈</h2>
+                    <div class="wish-content">
+                        <div class="poem">
+                            <p>慈母恩情重似山，</p>
+                            <p>年年此日喜团圆。</p>
+                            <p>温柔目送归家晚，</p>
+                            <p>细语叮咛出户间。</p>
+                            <p>岁月悠悠添白发，</p>
+                            <p>光阴点点忆童颜。</p>
+                            <p>愿君身健常欢笑，</p>
+                            <p>幸福安康到永年。</p>
+                        </div>
+                        <p class="signature">爱您的孩子</p>
+                    </div>
+                </div>
+                <div class="decorative-elements">
+                    <div class="hearts">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

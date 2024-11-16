@@ -1,0 +1,818 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    background-color: transparent;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 音乐控制 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#musicToggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #ff69b4;
+    color: white;
+    cursor: pointer;
+    animation: rotate 3s linear infinite;
+    font-size: 16px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#musicToggle:hover {
+    transform: scale(1.1);
+}
+
+/* 开场部分 */
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.title-group {
+    margin-bottom: 20px;
+}
+
+.birthday-cake-wrapper {
+    margin-top: 20px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 照片墙样式 */
+.photo-wall {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    transform: rotate(var(--rotation));
+    transition: all 0.5s ease;
+    height: 350px;
+}
+
+.photo-item:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 2;
+}
+
+.photo-card {
+    perspective: 1000px;
+    height: 100%;
+    width: 100%;
+}
+
+.photo-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.photo-item:hover .photo-inner {
+    transform: scale(1.1);
+}
+
+.photo-item.flipped .photo-inner {
+    transform: rotateY(180deg);
+}
+
+.photo-front, .photo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.photo-back {
+    transform: rotateY(180deg);
+}
+
+.photo-front img, .photo-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 祝福语区域 */
+.wishes {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.wish-text {
+    margin-bottom: 50px;
+}
+
+.wish-text h2 {
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+.wish-text p {
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* 蛋糕动画 */
+.cake {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.cake-layers {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(#ff9a9e, #fad0c4);
+    border-radius: 10px;
+    position: relative;
+}
+
+.candle {
+    width: 8px;
+    height: 30px;
+    background: #ffd700;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 1s infinite;
+}
+
+/* 动画效果 */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+
+/* 响应式布局 */
+@media (max-width: 1200px) {
+    .photo-wall {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .photo-wall {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-wall {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+}
+
+/* 礼花容器样式 */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+    background: #ff69b4;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: spread 1s ease-out forwards;
+    box-shadow: 0 0 5px currentColor;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes spread {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy));
+        opacity: 0;
+    }
+}
+
+/* 漂浮的心形装饰 */
+.floating-hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 过渡文字样式 */
+.transition-text {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(45deg, #ffe6e6, #fff5f5);
+    margin: 40px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.text-wrapper {
+    font-size: 2em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.text-wrapper p {
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+/* 改进的蛋糕动画 */
+.birthday-cake {
+    margin: 0 auto;
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.cake-base {
+    position: relative;
+    height: 100px;
+    width: 200px;
+    background: #ff9a9e;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cake-layer {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    border-radius: 10px;
+}
+
+.cake-layer:nth-child(2) {
+    top: 33.33%;
+    transform: scale(0.9);
+}
+
+.cake-layer:nth-child(3) {
+    top: 66.66%;
+    transform: scale(0.8);
+}
+
+.candles {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.candle {
+    width: 10px;
+    height: 30px;
+    background: #ffd700;
+    position: relative;
+    border-radius: 5px;
+}
+
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 30px;
+    background: #ff6b6b;
+    border-radius: 50% 50% 20% 20%;
+    animation: flicker 1s infinite;
+}
+
+/* 滚动提示 */
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ff69b4;
+    animation: bounce 2s infinite;
+}
+
+.scroll-hint i {
+    display: block;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 改进的祝福语区域 */
+.wish-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-content {
+    position: relative;
+    z-index: 2;
+    line-height: 2;
+    padding: 20px 0;
+}
+
+.wish-content p {
+    margin: 15px 0;
+    color: #666;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.wish-content p:hover {
+    color: #ff69b4;
+    transform: scale(1.05);
+}
+
+.signature {
+    margin-top: 30px !important;
+    font-style: italic;
+    color: #ff69b4 !important;
+    font-size: 1.2em !important;
+}
+
+.wish-text h2 {
+    color: #ff69b4;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.decorative-elements {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.hearts {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.hearts i {
+    color: #ff69b4;
+    font-size: 24px;
+    margin: 0 5px;
+    animation: float 3s infinite;
+}
+
+.hearts i:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hearts i:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .text-wrapper {
+        font-size: 1.5em;
+    }
+    
+    .birthday-cake-wrapper {
+        height: 200px;
+    }
+    
+    .birthday-cake {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .wish-container {
+        padding: 20px;
+    }
+}
+
+/* 修改和添加响应式样式 */
+
+/* 基础响应式设置 */
+@media (max-width: 768px) {
+    /* 标题调整 */
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    /* 容器内边距调整 */
+    .container {
+        padding: 10px;
+    }
+
+    /* 蛋糕尺寸调整 */
+    .birthday-cake-wrapper {
+        height: 180px;
+    }
+    
+    .birthday-cake {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* 过渡文字调整 */
+    .transition-text {
+        padding: 30px 0;
+        margin: 20px 0;
+    }
+
+    .text-wrapper {
+        font-size: 1.3em;
+    }
+
+    /* 照片墙调整 */
+    .photo-wall {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .photo-item {
+        height: 250px;
+    }
+
+    /* 祝福语区域调整 */
+    .wish-container {
+        padding: 20px;
+        margin: 0 10px;
+    }
+
+    .wish-text h2 {
+        font-size: 1.5em;
+    }
+
+    .wish-content {
+        padding: 10px 0;
+    }
+
+    .wish-content p {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+
+    /* 诗句样式优化 */
+    .poem p {
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin: 8px 0;
+    }
+}
+
+/* 更小屏幕的适配 */
+@media (max-width: 480px) {
+    /* 标题进一步缩小 */
+    h1 {
+        font-size: 1.5em;
+    }
+
+    /* 照片墙改为单列 */
+    .photo-wall {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .photo-item {
+        height: 300px;
+    }
+
+    /* 音乐控制按钮调整 */
+    #musicToggle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9em;
+    }
+
+    /* 祝福语进一步优化 */
+    .wish-container {
+        padding: 15px;
+    }
+
+    .wish-text h2 {
+        font-size: 1.3em;
+    }
+
+    .poem p {
+        font-size: 1em;
+    }
+
+    .signature {
+        font-size: 1.1em !important;
+    }
+}
+
+/* 优化触摸交互 */
+@media (hover: none) {
+    /* 为触摸设备优化照片翻转效果 */
+    .photo-item {
+        transform: none !important;
+    }
+
+    .photo-inner {
+        transition: transform 0.6s ease-out;
+    }
+
+    .photo-card {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 优化按钮触摸区域 */
+    #musicToggle {
+        padding: 10px;
+    }
+
+    /* 优化滚动提示 */
+    .scroll-hint {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}
+
+/* 优化动画性能 */
+@media (prefers-reduced-motion: reduce) {
+    .photo-inner,
+    .hearts i,
+    #musicToggle,
+    .scroll-hint {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* 适配不同屏幕高度 */
+@media (max-height: 700px) {
+    .intro {
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+
+    .birthday-cake-wrapper {
+        height: 150px;
+    }
+
+    .scroll-hint {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+/* 优化横屏模式 */
+@media (orientation: landscape) and (max-height: 500px) {
+    .intro {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .photo-wall {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .birthday-cake-wrapper {
+        height: 120px;
+    }
+
+    .birthday-cake {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* 优化暗色模式 */
+@media (prefers-color-scheme: dark) {
+    .wish-container {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .photo-front, .photo-back {
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* 背景马赛克样式 */
+.background-mosaic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+.mosaic-item {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 20s ease;
+}
+
+/* 给每个格子添加缓慢的放大效果 */
+.mosaic-item:nth-child(1) {
+    animation: slowZoom 25s infinite alternate;
+}
+
+.mosaic-item:nth-child(2) {
+    animation: slowZoom 30s infinite alternate-reverse;
+}
+
+.mosaic-item:nth-child(3) {
+    animation: slowZoom 35s infinite alternate;
+}
+
+.mosaic-item:nth-child(4) {
+    animation: slowZoom 40s infinite alternate-reverse;
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* 背景遮罩，让内容更容易阅读 */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 245, 245, 0.85); /* 使用与原背景色相近的半透明色 */
+    backdrop-filter: blur(5px);
+}
+
+/* 修改原有的 body 背景色为透明 */
+body {
+    background-color: transparent;
+}
+
+/* 确保其他内容在背景之上 */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .mosaic-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+    
+    .background-overlay {
+        background: rgba(255, 245, 245, 0.9); /* 移动端增加遮罩不透明度 */
+    }
+}
+
+/* 添加脉冲动画 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 105, 180, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+    }
+} 
